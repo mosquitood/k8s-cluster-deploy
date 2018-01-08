@@ -6,7 +6,7 @@
   - <a href="doc/CA和秘钥.md">CA和秘钥</a>
   - <a href="doc/Etcd集群.md">Etcd集群</a>
   - <a href="doc/Flannel网络.md">Flannel网络</a>
-  - <a href="doc/kubectl命令行工具.md">kubectl命令行工具</a>
+  - <a href="doc/kubectl命令行工具.md">kubectl命令行工具</a>
   - <a href="doc/master节点.md">master节点</a>
   - <a href="doc/node节点.md">node节点.md</a>
 ### 集群搭建脚本
