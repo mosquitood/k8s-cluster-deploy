@@ -1,14 +1,11 @@
 # 半自动脚本安装k8s集群
-
-### 步骤
-
 - 修改主机名称
 
 ```
 //永久修改
 hostnamectl --static set-hostname k8s-master
-
-- /etc/hosts 
+```
+- 修改/etc/hosts 
 
 ```
 192.168.18.74 etcd-node1
@@ -32,8 +29,7 @@ hostnamectl --static set-hostname k8s-master
 #master节点执行
 ./ca/init.sh
 ```
-#### 分发证书
-将生成的CA证书、秘钥文件、配置文件拷贝到 所有机器 的 /etc/kubernetes/ssl 目录下。分发证书不要进行压缩操作，否则可能证书会有问题。
+  1. 分发证书: 将生成的CA证书、秘钥文件、配置文件拷贝到 所有机器 的 /etc/kubernetes/ssl 目录下。分发证书不要进行压缩操作，否则可能证书会有问题。
 
 ```
 mkdir -p /etc/kubernetes/ssl 
@@ -44,9 +40,32 @@ cp ca* /etc/kubernetes/ssl
 
 - Etcd集群 
 
+ 注意修改etcd/env.sh文件
 ```
 ./etcd/init.sh
 ```
+- master节点
+
+ 注意修改master/custom.sh文件
+ 
+ ```
+ ./master/init.sh
+ ```
+  1. 分发 kubeconfig 文件: 将 ~/.kube/config 文件拷贝到运行 kubelet（k8s集群slave节点） 命令的机器的 ~/.kube/ 目录下。
+  
+ - node节点
+ 
+  注意修改slave/custom.sh
+  
+  ```
+  ./slave/init.sh
+  ```
+  
+### 检测脚本
+  - 相应的文件夹里面有检测脚本: check.sh
+
+### 清理脚本
+  - 相应的文件夹里面有检测脚本: clear.sh
 
 
 
