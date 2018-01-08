@@ -6,7 +6,7 @@ Requires=docker.service
 
 [Service]
 WorkingDirectory=/var/lib/kubelet
-ExecStart=/usr/local/bin/kubelet   --address=192.168.18.82   --hostname-override=k8s-slave1   --pod-infra-container-image=docker.tradecubic.com/k8s_containers/k8s-rhel7-pod-infrastructure:3.6   --experimental-bootstrap-kubeconfig=/etc/kubernetes/bootstrap.kubeconfig   --kubeconfig=/etc/kubernetes/kubelet.kubeconfig   --require-kubeconfig   --cert-dir=/etc/kubernetes/ssl   --cluster-dns=10.254.0.2   --cluster-domain=cluster.local   --hairpin-mode promiscuous-bridge   --allow-privileged=true   --serialize-image-pulls=false   --logtostderr=true   --v=2
+ExecStart=/usr/local/bin/kubelet   --address=192.168.18.82   --hostname-override=k8s-slave1   --pod-infra-container-image=mosquitood/k8s-rhel7-pod-infrastructure:3.6   --experimental-bootstrap-kubeconfig=/etc/kubernetes/bootstrap.kubeconfig   --kubeconfig=/etc/kubernetes/kubelet.kubeconfig   --require-kubeconfig   --cert-dir=/etc/kubernetes/ssl   --cluster-dns=10.254.0.2   --cluster-domain=cluster.local   --hairpin-mode promiscuous-bridge   --allow-privileged=true   --serialize-image-pulls=false   --logtostderr=true   --v=2
 ExecStartPost=/sbin/iptables -A INPUT -s 10.0.0.0/8 -p tcp --dport 4194 -j ACCEPT
 ExecStartPost=/sbin/iptables -A INPUT -s 172.16.0.0/12 -p tcp --dport 4194 -j ACCEPT
 ExecStartPost=/sbin/iptables -A INPUT -s 192.168.0.0/16 -p tcp --dport 4194 -j ACCEPT
