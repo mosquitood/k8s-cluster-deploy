@@ -339,3 +339,19 @@ kubectl create -f calico-kube-controllers.yaml
 - 各类证书必须挂载到容器中。否则连不上etcd。
 - kubeconfig和证书一样。
 
+
+
+### 以下是更改node节点上的kubelet 启动参数来支持calico
+
+```
+#添加这个参数即可，其余不变
+--network-plugin=cni
+--cni-conf-dir=/etc/cni/net.d
+--cni-bin-dir=/opt/cni/bin
+```
+
+
+
+### 检测是否成功
+
+- 可以创建两个pod，进入到其中一个ping另一个pod的IP看看是否通畅
