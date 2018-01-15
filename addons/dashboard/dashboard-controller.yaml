@@ -19,11 +19,9 @@ spec:
         scheduler.alpha.kubernetes.io/critical-pod: ''
     spec:
       serviceAccountName: dashboard
-      imagePullSecrets:
-      - name: docker-tradecubic-secret
       containers:
       - name: kubernetes-dashboard
-        image: docker.tradecubic.com/k8s_containers/kubernetes-dashboard-amd64:v1.6.3 
+        image: mosquitood/kubernetes-dashboard-amd64:v1.6.3 
         resources:
           # keep request = limit to keep this container in guaranteed class
           limits:
