@@ -4,3 +4,4 @@
 - 保证k8s集群系统运行正常。
 ## 插件
 - <a href="/addons/kubedns.md">KubeDNS</a>
+- <a href="/addons/dashboard.md">Dashboard</a>
