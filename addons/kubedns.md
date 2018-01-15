@@ -64,7 +64,7 @@ $ diff kubedns-controller.yaml.base kubedns-controller.yaml
 58c58
 <         image: gcr.io/google_containers/k8s-dns-kube-dns-amd64:1.14.1
 ---
->         image: docker.tradecubic.com/k8s_containers/k8s-dns-kube-dns-amd64:1.14.5
+>         image: mosquitood/k8s-dns-kube-dns-amd64:1.14.5
 88c88
 <         - --domain=__PILLAR__DNS__DOMAIN__.
 ---
@@ -76,7 +76,7 @@ $ diff kubedns-controller.yaml.base kubedns-controller.yaml
 110c110
 <         image: gcr.io/google_containers/k8s-dns-dnsmasq-nanny-amd64:1.14.1
 ---
->         image: docker.tradecubic.com/k8s_containers/k8s-dns-dnsmasq-nanny-amd64:1.14.5
+>         image: mosquitood/k8s-dns-dnsmasq-nanny-amd64:1.14.5
 129c129
 <         - --server=/__PILLAR__DNS__DOMAIN__/127.0.0.1#10053
 ---
@@ -84,7 +84,7 @@ $ diff kubedns-controller.yaml.base kubedns-controller.yaml
 148c148
 <         image: gcr.io/google_containers/k8s-dns-sidecar-amd64:1.14.1
 ---
->         image: docker.tradecubic.com/k8s_containers/k8s-dns-sidecar-amd64:1.14.5
+>         image: mosquitood/k8s-dns-sidecar-amd64:1.14.5
 161,162c161,162
 <         - --probe=kubedns,127.0.0.1:10053,kubernetes.default.svc.__PILLAR__DNS__DOMAIN__,5,A
 <         - --probe=dnsmasq,127.0.0.1:53,kubernetes.default.svc.__PILLAR__DNS__DOMAIN__,5,A
