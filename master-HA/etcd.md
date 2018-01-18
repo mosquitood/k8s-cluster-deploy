@@ -80,6 +80,7 @@ EOF
 ```
 
 - hosts 字段指定授权使用该证书的 etcd 节点 IP。
+- NODE_IP指的是当前节点IP。
 
 ### 生成etcd证书和私钥
 
@@ -158,6 +159,8 @@ mkdir -p /etc/kubernetes/manifests
 cp etcd.yaml /etc/kubernetes/manifests/etcd.yaml
 ```
 - discovery参数有命令 curl https://discovery.etcd.io/new?size=3 生成
+- NODE_NAME 集群当前节点名称，不能重复。
+- NODE_IP 集群当前节点IP。
 
 ## 安装kubelet
 
@@ -195,7 +198,8 @@ cp kubelet.service /etc/systemd/system/kubelet.service
 systemctl enable kubelet
 systemctl start kubelet
 ```
-
+- NODE_NAME 集群当前节点名称，不能重复。
+- NODE_IP 集群当前节点IP。
 ## 检查
 
 ```shell
