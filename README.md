@@ -19,3 +19,5 @@
   - <a href="/addons/kubedns.md">KubeDNS</a>
   - <a href="/addons/dashboard.md">DashBoard</a>
 
+### master高可用
+- <a href="/master-HA/etcd.md">etcd集群高可用</a>
