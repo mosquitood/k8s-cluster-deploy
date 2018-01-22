@@ -6,3 +6,4 @@
 - <a href="/addons/kubedns.md">KubeDNS</a>
 - <a href="/addons/dashboard.md">Dashboard</a>
 - <a href="/addons/heapster.md">Heapster</a>
+- <a href="/addons/efk.md">EFK</a>
