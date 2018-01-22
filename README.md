@@ -10,7 +10,7 @@
   - <a href="/doc/Calico网络.md">Calico网络</a>
   - <a href="/doc/kubectl命令行工具.md">kubectl命令行工具</a>
   - <a href="/doc/master节点.md">master节点</a>
-  - <a href="/doc/node节点.md">node节点.md</a>
+  - <a href="/doc/node节点.md">node节点</a>
 ### 集群搭建脚本
   - <a href="/bash/install.md">集群搭建脚本(由于二进制文件太大，无法上传到git。暂不支持脚本自动安装)</a>
 
@@ -18,6 +18,9 @@
 - <a href="/addons/README.md">插件部署直通车</a>
   - <a href="/addons/kubedns.md">KubeDNS</a>
   - <a href="/addons/dashboard.md">DashBoard</a>
+  - <a href="/addons/heapster.md">Heapster</a>
+  - <a href="/addons/efk.md">EFK</a>
 
 ### master高可用
 - <a href="/master-HA/etcd.md">etcd集群高可用</a>
+- <a href="/master-HA/master.md">master集群高可用</a>
