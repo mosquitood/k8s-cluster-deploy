@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kube-apiserver
+spec:
+  hostNetwork: true
+  containers:
+  - name: kube-apiserver
+    image: mosquitood/kube-apiserver:v1.8.4
+    command:
+    - /usr/local/bin/kube-apiserver  
+    - --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota
+    - --advertise-address=192.168.18.226 
+    - --bind-address=192.168.18.226 
+    - --insecure-bind-address=192.168.18.226 
+    - --authorization-mode=RBAC 
+    - --runtime-config=rbac.authorization.k8s.io/v1alpha1 
+    - --kubelet-https=true 
+    - --experimental-bootstrap-token-auth 
+    - --token-auth-file=/etc/kubernetes/token.csv 
+    - --service-cluster-ip-range=10.254.0.0/16 
+    - --service-node-port-range=8400-9000 
+    - --tls-cert-file=/etc/kubernetes/ssl/kubernetes.pem 
+    - --tls-private-key-file=/etc/kubernetes/ssl/kubernetes-key.pem 
+    - --client-ca-file=/etc/kubernetes/ssl/ca.pem 
+    - --service-account-key-file=/etc/kubernetes/ssl/ca-key.pem 
+    - --etcd-cafile=/etc/kubernetes/ssl/ca.pem 
+    - --etcd-certfile=/etc/kubernetes/ssl/kubernetes.pem 
+    - --etcd-keyfile=/etc/kubernetes/ssl/kubernetes-key.pem 
+    - --etcd-servers=https://192.168.18.223:2379,https://192.168.18.225:2379,https://192.168.18.226:2379 
+    - --enable-swagger-ui=true 
+    - --allow-privileged=true 
+    - --apiserver-count=3 
+    - --audit-log-maxage=30 
+    - --audit-log-maxbackup=3 
+    - --audit-log-maxsize=100 
+    - --audit-log-path=/var/log/kube-apiserver.log
+    - --event-ttl=1h 
+    - --v=2
+    ports:
+    - containerPort: 443
+      hostPort: 443
+      name: https
+    - containerPort: 7080
+      hostPort: 7080
+      name: http
+    - containerPort: 8080
+      hostPort: 8080
+      name: local
+    volumeMounts:
+    - mountPath: /etc/kubernetes
+      name: k8sssl 
+      readOnly: true
+    - mountPath: /var/log/kube-apiserver.log
